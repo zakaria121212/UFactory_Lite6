@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="lite_gripper">
+
+  <!-- Include all Lite Gripper component XACROs -->
+  <xacro:include filename="$(find xarm_description)/urdf/gripper/lite_gripper.ros2_control.xacro" />
+  <xacro:include filename="$(find xarm_description)/urdf/gripper/lite_gripper.urdf.xacro" />
+  <xacro:include filename="$(find xarm_description)/urdf/gripper/lite_gripper.transmission.xacro" />
+  <xacro:include filename="$(find xarm_description)/urdf/gripper/lite_gripper.gazebo.xacro" />
+
+  <xacro:macro name="lite_gripper_macro" params="prefix:='' attach_to:='link_eef' ns:='lite' attach_xyz:='0 0 0' attach_rpy:='0 0 0' 
+    mesh_scale:='0.001 0.001 0.001' ros2_control_plugin:='uf_robot_hardware/UFRobotFakeSystemHardware' dof:=6 hard_interface:='PositionJointInterface' ">
+
+    <!-- 1) ROS2 Control interface (only in ROS2) -->
+    <xacro:if value="${is_ros2 and ros2_control_plugin != 'uf_robot_hardware/UFRobotSystemHardware'}">
+      <xacro:lite_gripper_ros2_control prefix="${prefix}" ros2_control_plugin="${ros2_control_plugin}" />
+    </xacro:if>
+
+    <!-- 2) Kinematic & visual definition -->
+  <xacro:lite_gripper_urdf prefix="${prefix}" attach_to="${attach_to}" attach_xyz="${attach_xyz}" attach_rpy="${attach_rpy}" mesh_scale="${mesh_scale}" />
+
+    <!-- 3) Transmissions for both fingers -->
+    <xacro:lite_gripper_transmission prefix="${prefix}" hard_interface="${hard_interface}" />
+
+    <!-- 4) Gazebo plugins (ros2_control + grasp fix + selfCollide off) -->
+    <xacro:lite_gripper_gazebo prefix="${prefix}"  />
+    
+    <xacro:if value="${not is_ros2}">
+      <!-- Pass unprefixed palm_link; macro adds prefix internally -->
+      <xacro:lite_gazebo_grasp_fix prefix="${prefix}" palm_link="link${dof}" />
+    </xacro:if>
+  
+  </xacro:macro>
+
+</robot>

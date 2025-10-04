@@ -1,0 +1,111 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro" name="lite_gripper">
+
+  <!--
+    Stable Lite gripper macro
+    - inertials set for base and finger links
+    - prismatic finger joints with limits and damping
+    - mesh_scale param to handle mm-based meshes (default 0.001)
+    - fixed attach_to joint to mount on parent link (e.g., ${prefix}link_eef)
+  -->
+  <xacro:macro name="lite_gripper_urdf" params="prefix:='' attach_to:='' attach_xyz:='0 0 0' attach_rpy:='0 0 0' mesh_scale:='0.001 0.001 0.001'">
+
+    <!-- 1) Fixed mount to parent link if requested -->
+    <xacro:unless value="${attach_to == ''}">
+      <joint name="${prefix}gripper_fix" type="fixed">
+        <parent link="${attach_to}"/>
+        <child  link="${prefix}lite_gripper_base_link"/>
+        <origin xyz="${attach_xyz}" rpy="${attach_rpy}"/>
+      </joint>
+    </xacro:unless>
+
+    <!-- 2) Base link -->
+    <link name="${prefix}lite_gripper_base_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.28"/>
+        <inertia ixx="0.00047106" ixy="3.9292E-07" ixz="2.6537E-06"
+                 iyy="0.00033072" iyz="-1.0975E-05" izz="0.00025642" />
+      </inertial>
+      <xacro:common_link_visual 
+        mesh_filename="gripper/lite/visual/base"  
+        origin_xyz="-0.039 -0.039 0" 
+        origin_rpy="0 0 0"
+        mesh_scale="${mesh_scale}" />
+      <xacro:common_link_collision 
+        mesh_filename="gripper/lite/collision/base"  
+        origin_xyz="-0.039 -0.039 0" 
+        origin_rpy="0 0 0" 
+        mesh_scale="${mesh_scale}" />
+    </link>
+
+    <!-- TCP link for MoveIt end-effector parent (position approximate) -->
+    <link name="${prefix}link_tcp"/>
+    <joint name="${prefix}joint_tcp" type="fixed">
+      <!-- Position TCP slightly above the base; tune as needed -->
+      <origin xyz="0 0 0.06" rpy="0 0 0"/>
+      <parent link="${prefix}lite_gripper_base_link"/>
+      <child  link="${prefix}link_tcp"/>
+    </joint>
+
+    <!-- 3) Left finger link -->
+    <link name="${prefix}left_finger_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.05"/>
+        <inertia ixx="2.0e-4" ixy="0" ixz="0" iyy="2.0e-4" iyz="0" izz="2.0e-4"/>
+      </inertial>
+      <xacro:common_link_visual 
+        mesh_filename="gripper/lite/visual/left_finger"  
+        origin_xyz="-0.0099 -0.023866 -0.001" 
+        origin_rpy="0 0 0"
+        mesh_scale="${mesh_scale}" />
+      <xacro:common_link_collision 
+        mesh_filename="gripper/lite/collision/left_finger"  
+        origin_xyz="-0.0099 -0.023866 -0.001" 
+        origin_rpy="0 0 0" 
+        mesh_scale="${mesh_scale}" />
+    </link>
+
+    <!-- 4) Prismatic joint for left finger (move along +X toward center) -->
+    <joint name="${prefix}left_finger_joint" type="prismatic">
+      <parent link="${prefix}lite_gripper_base_link"/>
+      <child  link="${prefix}left_finger_link"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <axis   xyz="0 1 0"/>
+      <limit  lower="0.0" upper="0.0080" effort="20.0" velocity="0.2"/>
+      <dynamics damping="1.0" friction="0.1"/>
+    </joint>
+
+    <!-- 5) Right finger link -->
+    <link name="${prefix}right_finger_link">
+      <inertial>
+        <origin xyz="0 0 0" rpy="0 0 0"/>
+        <mass value="0.05"/>
+        <inertia ixx="2.0e-4" ixy="0" ixz="0" iyy="2.0e-4" iyz="0" izz="2.0e-4"/>
+      </inertial>
+      <xacro:common_link_visual 
+        mesh_filename="gripper/lite/visual/right_finger"  
+        origin_xyz="-0.0099 0 -0.001" 
+        origin_rpy="0 0 0"
+        mesh_scale="${mesh_scale}" />
+      <xacro:common_link_collision 
+        mesh_filename="gripper/lite/collision/right_finger"  
+        origin_xyz="-0.0099 0 -0.001" 
+        origin_rpy="0 0 0" 
+        mesh_scale="${mesh_scale}" />
+    </link>
+
+    <!-- 6) Prismatic joint for right finger (move along -X toward center) -->
+    <joint name="${prefix}right_finger_joint" type="prismatic">
+      <parent link="${prefix}lite_gripper_base_link"/>
+      <child  link="${prefix}right_finger_link"/>
+      <origin xyz="-0 0 0" rpy="0 0 0"/>
+      <axis   xyz="0 -1 0"/>
+      <limit  lower="0.0" upper="0.0080" effort="20.0" velocity="0.2"/>
+      <dynamics damping="1.0" friction="0.1"/>
+    </joint>
+
+  </xacro:macro>
+
+</robot>
