@@ -1,0 +1,1558 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='table'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='surface'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.03</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>0.6</mu>
+                <mu2>0.6</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual1'>
+          <pose>0 0 1 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1.5 0.8 0.03</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Wood</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='front_left_leg'>
+          <pose>0.68 0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='front_left_leg'>
+          <pose>0.68 0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='front_right_leg'>
+          <pose>0.68 -0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='front_right_leg'>
+          <pose>0.68 -0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='back_right_leg'>
+          <pose>-0.68 -0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='back_right_leg'>
+          <pose>-0.68 -0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='back_left_leg'>
+          <pose>-0.68 0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='back_left_leg'>
+          <pose>-0.68 0.38 0.5 0 -0 0</pose>
+          <geometry>
+            <cylinder>
+              <radius>0.02</radius>
+              <length>1</length>
+            </cylinder>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0 -0.84 0 0 -0 0</pose>
+    </model>
+    <model name='bucket_1'>
+      <static>1</static>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/zakaria/.gazebo/models/bucket/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/home/zakaria/.gazebo/models/bucket/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0.25 -0.84 0.98 0 -0 0</pose>
+    </model>
+    <model name='bucket_2'>
+      <static>1</static>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/zakaria/.gazebo/models/bucket/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/home/zakaria/.gazebo/models/bucket/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.25 -0.84 0.98 0 -0 0</pose>
+    </model>
+    <model name='dinner_plate'>
+      <static>1</static>
+      <link name='link_0'>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>/home/zakaria/.gazebo/models/plate/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='collision_0'>
+          <geometry>
+            <mesh>
+              <uri>/home/zakaria/.gazebo/models/plate/meshes/model.obj</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>0 -0.84 0.88 0 -0 0</pose>
+    </model>
+    <model name='red_ball_1'>
+      <pose>0.08 -0.84 0.915 0 -0 0</pose>
+      <static>0</static>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>4.9e-05</ixx>
+            <iyy>4.9e-05</iyy>
+            <izz>4.9e-05</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='red_ball_2'>
+      <pose>-0.08 -0.84 0.915 0 -0 0</pose>
+      <static>0</static>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>4.9e-05</ixx>
+            <iyy>4.9e-05</iyy>
+            <izz>4.9e-05</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>1 0 0 1</ambient>
+            <diffuse>1 0 0 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='blue_ball_1'>
+      <pose>0.03 -0.8 0.915 0 -0 0</pose>
+      <static>0</static>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>4.9e-05</ixx>
+            <iyy>4.9e-05</iyy>
+            <izz>4.9e-05</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='blue_ball_2'>
+      <pose>-0.03 -0.8 0.915 0 -0 0</pose>
+      <static>0</static>
+      <link name='link'>
+        <inertial>
+          <mass>0.1</mass>
+          <inertia>
+            <ixx>4.9e-05</ixx>
+            <iyy>4.9e-05</iyy>
+            <izz>4.9e-05</izz>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyz>0</iyz>
+          </inertia>
+          <pose>0 0 0 0 -0 0</pose>
+        </inertial>
+        <collision name='collision'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <sphere>
+              <radius>0.035</radius>
+            </sphere>
+          </geometry>
+          <material>
+            <ambient>0 0 1 1</ambient>
+            <diffuse>0 0 1 1</diffuse>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='UF_ROBOT'>
+      <joint name='world_joint' type='fixed'>
+        <pose relative_to='__model__'>0 0 0 0 -0 0</pose>
+        <parent>world</parent>
+        <child>link_base</child>
+      </joint>
+      <link name='link_base'>
+        <pose relative_to='world_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.008295 3.3e-05 0.063119 0 -0 0</pose>
+          <mass>1.65394</mass>
+          <inertia>
+            <ixx>0</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0</iyy>
+            <iyz>0</iyz>
+            <izz>0</izz>
+          </inertia>
+        </inertial>
+        <collision name='link_base_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/collision/link_base.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link_base_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/visual/link_base.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint1' type='revolute'>
+        <pose relative_to='link_base'>0 0 0.2435 0 -0 0</pose>
+        <parent>link_base</parent>
+        <child>link1</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-6.28319</lower>
+            <upper>6.28319</upper>
+            <effort>50</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link1'>
+        <pose relative_to='joint1'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.00036 0.04195 -0.0025 0 -0 0</pose>
+          <mass>1.411</mass>
+          <inertia>
+            <ixx>0.00145164</ixx>
+            <ixy>-1.24e-05</ixy>
+            <ixz>6.7e-06</ixz>
+            <iyy>0.0008873</iyy>
+            <iyz>-0.0001255</iyz>
+            <izz>0.00131993</izz>
+          </inertia>
+        </inertial>
+        <collision name='link1_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/collision/link1.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link1_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/visual/link1.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint2' type='revolute'>
+        <pose relative_to='link1'>0 0 0 -1.57079 -1.57079 7e-06</pose>
+        <parent>link1</parent>
+        <child>link2</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.61799</lower>
+            <upper>2.61799</upper>
+            <effort>50</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link2'>
+        <pose relative_to='joint2'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.179 0 0.0584 0 -0 0</pose>
+          <mass>1.34</mass>
+          <inertia>
+            <ixx>0.0015854</ixx>
+            <ixy>6.766e-06</ixy>
+            <ixz>0.00115136</ixz>
+            <iyy>0.0056097</iyy>
+            <iyz>-1.14e-06</iyz>
+            <izz>0.00485</izz>
+          </inertia>
+        </inertial>
+        <collision name='link2_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/collision/link2.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link2_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/visual/link2.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint3' type='revolute'>
+        <pose relative_to='link2'>0.2002 0 0 3.14159 -0 1.5708</pose>
+        <parent>link2</parent>
+        <child>link3</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-0.061087</lower>
+            <upper>5.23599</upper>
+            <effort>32</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link3'>
+        <pose relative_to='joint3'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0.072 -0.0357 -0.001 0 -0 0</pose>
+          <mass>0.953</mass>
+          <inertia>
+            <ixx>0.0008861</ixx>
+            <ixy>0.00039287</ixy>
+            <ixz>-7.066e-05</ixz>
+            <iyy>0.0015785</iyy>
+            <iyz>2.445e-05</iyz>
+            <izz>0.00184677</izz>
+          </inertia>
+        </inertial>
+        <collision name='link3_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/collision/link3.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link3_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/visual/link3.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint4' type='revolute'>
+        <pose relative_to='link3'>0.087 -0.22761 0 1.5708 -0 0</pose>
+        <parent>link3</parent>
+        <child>link4</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-6.28319</lower>
+            <upper>6.28319</upper>
+            <effort>32</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link4'>
+        <pose relative_to='joint4'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>-0.002 -0.0285 -0.0813 0 -0 0</pose>
+          <mass>1.284</mass>
+          <inertia>
+            <ixx>0.003705</ixx>
+            <ixy>2e-06</ixy>
+            <ixz>-7.17e-06</ixz>
+            <iyy>0.0030455</iyy>
+            <iyz>0.00093188</iyz>
+            <izz>0.0015413</izz>
+          </inertia>
+        </inertial>
+        <collision name='link4_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/collision/link4.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link4_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/visual/link4.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint5' type='revolute'>
+        <pose relative_to='link4'>0 0 0 1.5708 -0 0</pose>
+        <parent>link4</parent>
+        <child>link5</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-2.1642</lower>
+            <upper>2.1642</upper>
+            <effort>32</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link5'>
+        <pose relative_to='joint5'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0.01 0.0019 0 -0 0</pose>
+          <mass>0.804</mass>
+          <inertia>
+            <ixx>0.0005668</ixx>
+            <ixy>-6e-07</ixy>
+            <ixz>5.3e-06</ixz>
+            <iyy>0.0005077</iyy>
+            <iyz>4.8e-07</iyz>
+            <izz>0.00053</izz>
+          </inertia>
+        </inertial>
+        <collision name='link5_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/collision/link5.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link5_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/visual/link5.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>1</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='joint6' type='revolute'>
+        <pose relative_to='link5'>0 0.0625 0 -1.5708 0 0</pose>
+        <parent>link5</parent>
+        <child>link6</child>
+        <axis>
+          <xyz>0 0 1</xyz>
+          <limit>
+            <lower>-6.28319</lower>
+            <upper>6.28319</upper>
+            <effort>20</effort>
+            <velocity>3.14</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='link6'>
+        <pose relative_to='joint6'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 -0.000615 -0.003234 0 -0 0</pose>
+          <mass>0.41</mass>
+          <inertia>
+            <ixx>0.000557891</ixx>
+            <ixy>-6.0708e-07</ixy>
+            <ixz>2.2537e-06</ixz>
+            <iyy>0.000425622</iyy>
+            <iyz>-1.21318e-05</iyz>
+            <izz>0.000404894</izz>
+          </inertia>
+        </inertial>
+        <collision name='link6_collision'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/collision/link6.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <collision name='link6_fixed_joint_lump__link_eef_collision_1'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/camera/realsense/collision/d435_with_cam_stand.stl</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <collision name='link6_fixed_joint_lump__lite_gripper_base_link_collision_2'>
+          <pose>-0.039 -0.039 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/gripper/lite/collision/base.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='link6_visual'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/lite6/visual/link6.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link6_fixed_joint_lump__link_eef_visual_1'>
+          <pose>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>1 1 1</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/camera/realsense/visual/d435_with_cam_stand.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <visual name='link6_fixed_joint_lump__lite_gripper_base_link_visual_2'>
+          <pose>-0.039 -0.039 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/gripper/lite/visual/base.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <sensor name='cameracolor' type='camera'>
+          <camera name='camera'>
+            <horizontal_fov>1.57</horizontal_fov>
+            <image>
+              <width>1280</width>
+              <height>720</height>
+              <format>RGB_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.007</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>1</visualize>
+          <pose>0.06746 -0.0325 0.0237 3.14159 -1.57079 -3e-06</pose>
+        </sensor>
+        <sensor name='cameradepth' type='depth'>
+          <camera name='camera'>
+            <horizontal_fov>1.57</horizontal_fov>
+            <image>
+              <width>1280</width>
+              <height>720</height>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.1</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>0</visualize>
+          <pose>0.06746 -0.0175 0.0237 3.14159 -1.57079 -3e-06</pose>
+        </sensor>
+        <sensor name='cameraired1' type='camera'>
+          <camera name='camera'>
+            <horizontal_fov>1.57</horizontal_fov>
+            <image>
+              <width>1280</width>
+              <height>720</height>
+              <format>L_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.05</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>0</visualize>
+          <pose>0.06746 -0.0175 0.0237 3.14159 -1.57079 -3e-06</pose>
+        </sensor>
+        <sensor name='cameraired2' type='camera'>
+          <camera name='camera'>
+            <horizontal_fov>1.57</horizontal_fov>
+            <image>
+              <width>1280</width>
+              <height>720</height>
+              <format>L_INT8</format>
+            </image>
+            <clip>
+              <near>0.1</near>
+              <far>100</far>
+            </clip>
+            <noise>
+              <type>gaussian</type>
+              <mean>0</mean>
+              <stddev>0.05</stddev>
+            </noise>
+          </camera>
+          <always_on>1</always_on>
+          <update_rate>30</update_rate>
+          <visualize>0</visualize>
+          <pose>0.06746 0.0325 0.0237 3.14159 -1.57079 -3e-06</pose>
+        </sensor>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='left_finger_joint' type='prismatic'>
+        <pose relative_to='link6'>0 0 0 0 -0 0</pose>
+        <parent>link6</parent>
+        <child>left_finger_link</child>
+        <axis>
+          <xyz>0 1 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0.008</upper>
+            <effort>20</effort>
+            <velocity>0.2</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>0.1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='left_finger_link'>
+        <pose relative_to='left_finger_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0002</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0002</iyy>
+            <iyz>0</iyz>
+            <izz>0.0002</izz>
+          </inertia>
+        </inertial>
+        <collision name='left_finger_link_collision'>
+          <pose>-0.0099 -0.023866 -0.001 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/gripper/lite/collision/left_finger.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='left_finger_link_visual'>
+          <pose>-0.0099 -0.023866 -0.001 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/gripper/lite/visual/left_finger.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <joint name='right_finger_joint' type='prismatic'>
+        <pose relative_to='link6'>0 0 0 0 -0 0</pose>
+        <parent>link6</parent>
+        <child>right_finger_link</child>
+        <axis>
+          <xyz>0 -1 0</xyz>
+          <limit>
+            <lower>0</lower>
+            <upper>0.008</upper>
+            <effort>20</effort>
+            <velocity>0.2</velocity>
+          </limit>
+          <dynamics>
+            <damping>1</damping>
+            <friction>0.1</friction>
+            <spring_reference>0</spring_reference>
+            <spring_stiffness>0</spring_stiffness>
+          </dynamics>
+        </axis>
+      </joint>
+      <link name='right_finger_link'>
+        <pose relative_to='right_finger_joint'>0 0 0 0 -0 0</pose>
+        <inertial>
+          <pose>0 0 0 0 -0 0</pose>
+          <mass>0.05</mass>
+          <inertia>
+            <ixx>0.0002</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.0002</iyy>
+            <iyz>0</iyz>
+            <izz>0.0002</izz>
+          </inertia>
+        </inertial>
+        <collision name='right_finger_link_collision'>
+          <pose>-0.0099 0 -0.001 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/gripper/lite/collision/right_finger.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <friction>
+              <ode/>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='right_finger_link_visual'>
+          <pose>-0.0099 0 -0.001 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <scale>0.001 0.001 0.001</scale>
+              <uri>file:///home/zakaria/dev_ws/install/xarm_description/share/xarm_description/meshes/gripper/lite/visual/right_finger.stl</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <plugin name='realsense_gazebo_camera' filename='librealsense_gazebo_plugin.so'>
+        <prefix>camera</prefix>
+        <depthUpdateRate>30.0</depthUpdateRate>
+        <colorUpdateRate>30.0</colorUpdateRate>
+        <infraredUpdateRate>30.0</infraredUpdateRate>
+        <depthTopicName>aligned_depth_to_color/image_raw</depthTopicName>
+        <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
+        <colorTopicName>color/image_raw</colorTopicName>
+        <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
+        <infrared1TopicName>infra1/image_raw</infrared1TopicName>
+        <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
+        <infrared2TopicName>infra2/image_raw</infrared2TopicName>
+        <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
+        <colorOpticalframeName>camera_color_optical_frame</colorOpticalframeName>
+        <depthOpticalframeName>camera_depth_optical_frame</depthOpticalframeName>
+        <infrared1OpticalframeName>camera_left_ir_optical_frame</infrared1OpticalframeName>
+        <infrared2OpticalframeName>camera_right_ir_optical_frame</infrared2OpticalframeName>
+        <rangeMinDepth>0.3</rangeMinDepth>
+        <rangeMaxDepth>3.0</rangeMaxDepth>
+        <pointCloud>1</pointCloud>
+        <pointCloudTopicName>depth/color/points</pointCloudTopicName>
+        <pointCloudCutoff>0.3</pointCloudCutoff>
+      </plugin>
+      <static>0</static>
+      <plugin name='gazebo_ros2_control' filename='libgazebo_ros2_control.so'>
+        <robot_sim_type>gazebo_ros2_control/GazeboSystem</robot_sim_type>
+        <parameters>/tmp/launch_params_qnn74r8w</parameters>
+      </plugin>
+      <pose>0 -0.5 1.021 0 0 -1.571</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>193 908000000</sim_time>
+      <real_time>431 981882293</real_time>
+      <wall_time>1756227216 698010523</wall_time>
+      <iterations>193908</iterations>
+      <model name='UF_ROBOT'>
+        <pose>0 -0.5 1.021 -0 -0 -1.571</pose>
+        <scale>1 1 1</scale>
+        <link name='left_finger_link'>
+          <pose>-9e-06 -0.587002 1.17459 -3.14153 -2.6e-05 -1.57096</pose>
+          <velocity>-4.7e-05 0.003937 -0.002026 0.021768 -3e-06 0.000554</velocity>
+          <acceleration>-0.046672 3.93704 -2.02596 0.004406 0.000206 0.002038</acceleration>
+          <wrench>-0.002334 0.196852 -0.101298 0 -0 0</wrench>
+        </link>
+        <link name='link1'>
+          <pose>0 -0.499999 1.2645 -7e-06 -2e-06 -1.57101</pose>
+          <velocity>-0 -0 0 0 0 -0.00065</velocity>
+          <acceleration>0.000228 -0.027284 4e-06 -0.098488 0.054017 -0.65889</acceleration>
+          <wrench>0.000322 -0.038498 5e-06 0 -0 0</wrench>
+        </link>
+        <link name='link2'>
+          <pose>-2e-06 -0.499998 1.2645 -0.072843 -1.57076 -3.06894</pose>
+          <velocity>0 -0 0 0.013602 -3e-06 -0.000648</velocity>
+          <acceleration>-0.000457 -2.47279 1.6e-05 2.92198 0.020551 -0.510265</acceleration>
+          <wrench>-0.000612 -3.31354 2.1e-05 0 -0 0</wrench>
+        </link>
+        <link name='link3'>
+          <pose>-9e-06 -0.499999 1.4647 1.57084 1.2e-05 -1.57097</pose>
+          <velocity>-1e-06 -0.002723 -0 0.023285 -4e-06 -0.000647</velocity>
+          <acceleration>-0.046919 -1.89264 -1.67655 -0.899246 -0.749644 1.3231</acceleration>
+          <wrench>-0.044713 -1.80368 -1.59775 0 -0 0</wrench>
+        </link>
+        <link name='link4'>
+          <pose>-1.3e-05 -0.586999 1.23709 -3.14154 -6e-06 -1.57098</pose>
+          <velocity>-5.6e-05 0.002576 -0.002026 0.023285 -3e-06 -0.000274</velocity>
+          <acceleration>-0.0558 0.675526 -1.97928 -2.79325 -0.12151 -2.63959</acceleration>
+          <wrench>-0.071647 0.867375 -2.5414 0 -0 0</wrench>
+        </link>
+        <link name='link5'>
+          <pose>-1.3e-05 -0.587 1.23709 -1.57073 -1.6e-05 -1.57097</pose>
+          <velocity>-5.6e-05 0.002576 -0.002026 0.021768 -3e-06 -0.000273</velocity>
+          <acceleration>-0.056055 2.79363 -2.02588 -1.85399 0.191348 -0.035817</acceleration>
+          <wrench>-0.045069 2.24608 -1.62881 0 -0 0</wrench>
+        </link>
+        <link name='link6'>
+          <pose>-9e-06 -0.587002 1.17459 -3.14153 -2.5e-05 -1.57096</pose>
+          <velocity>-5.6e-05 0.003937 -0.002026 0.021769 -3e-06 0.000556</velocity>
+          <acceleration>-0.05589 3.86697 -2.02593 -2.83505 0.054077 1.54367</acceleration>
+          <wrench>-0.022915 1.58546 -0.830632 0 -0 0</wrench>
+        </link>
+        <link name='link_base'>
+          <pose>0 -0.5 1.021 -0 -0 -1.571</pose>
+          <velocity>0 0 -0 0 -0 0</velocity>
+          <acceleration>2e-06 1.9e-05 -1e-06 0 -0 0</acceleration>
+          <wrench>2e-06 3.1e-05 -2e-06 0 -0 0</wrench>
+        </link>
+        <link name='right_finger_link'>
+          <pose>-8e-06 -0.587002 1.17459 -3.14153 -2.5e-05 -1.57096</pose>
+          <velocity>-4.8e-05 0.003937 -0.002026 0.021769 -3e-06 0.000555</velocity>
+          <acceleration>-0.047886 3.93704 -2.02597 0.005065 0.000224 0.003463</acceleration>
+          <wrench>-0.002394 0.196852 -0.101298 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='blue_ball_1'>
+        <pose>0.050835 -0.834912 1.06244 1.26465 0.381128 -0.515882</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.050835 -0.834912 1.06244 1.26465 0.381128 -0.515882</pose>
+          <velocity>-0.004507 -0.003863 0.000695 0.083964 -0.127188 -0.163163</velocity>
+          <acceleration>1.15999 -0.143699 -0.281754 1.06706 1.00762 3.13519</acceleration>
+          <wrench>0.115999 -0.01437 -0.028175 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='blue_ball_2'>
+        <pose>-0.020616 -0.831214 1.06124 -0.430629 -0.029041 -2.51778</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.020616 -0.831214 1.06124 -0.430629 -0.029041 -2.51778</pose>
+          <velocity>-0.001501 -0.001386 -0.001532 0.038474 -0.044534 0.023118</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -0.98 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='bucket_1'>
+        <pose>0.248645 -0.841354 1.01162 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>0.248645 -0.841354 1.01162 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='bucket_2'>
+        <pose>-0.25 -0.84 1.01704 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-0.25 -0.84 1.01704 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='dinner_plate'>
+        <pose>-0 -0.84 1.01733 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link_0'>
+          <pose>-0 -0.84 1.01733 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='red_ball_1'>
+        <pose>0.051929 -0.904895 1.06342 -1.75347 0.745627 -2.09071</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0.051929 -0.904895 1.06342 -1.75347 0.745627 -2.09071</pose>
+          <velocity>-0.002075 -0.002046 -0.009586 0.050221 -0.027429 0.231344</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -0.98 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='red_ball_2'>
+        <pose>-0.030894 -0.900456 1.06187 1.60845 -0.142353 -0.856225</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.030894 -0.900456 1.06187 1.60845 -0.142353 -0.856225</pose>
+          <velocity>-1.1e-05 0.001988 -0.010274 -0.058605 -0.001326 -0.004187</velocity>
+          <acceleration>0 0 -9.8 0 -0 0</acceleration>
+          <wrench>0 0 -0.98 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='table'>
+        <pose>0 -0.84 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 -0.84 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>0.081995 -3.63695 1.23323 0 -0 1.5708</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
